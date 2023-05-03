@@ -1,4 +1,16 @@
-package questao_01
+package problema_01
+
+// Observe o trecho de código abaixo:
+// int INDICE = 13, SOMA = 0, K = 0;
+// enquanto K < INDICE faça
+// {
+//   K = K + 1;
+//   SOMA = SOMA + K;
+// }
+//
+// imprimir(SOMA);
+//
+// Ao final do processamento, qual será o valor da variável SOMA?
 
 /**
  * Matematicamente, podemos representar essa soma usando a fórmula da soma dos termos de uma progressão aritmética:
@@ -32,14 +44,19 @@ package questao_01
  * e assim por diante até que K seja igual a 13 e não entrando mais no escopo do while. Assim o valor de SOMA é 91.
  */
 fun main() {
-  val INDICE = 13
-  var SOMA = 0
-  var K = 0
+  val result = somarNumerosAte(13)
 
-  while (K < INDICE) {
-    K += 1
-    SOMA += K
+  println("Resultado da soma até 13 é: $result")
+}
+
+fun somarNumerosAte(indice: Int): Int {
+  var soma = 0
+  var k = 0
+
+  while (k < indice) {
+    k++
+    soma += k
   }
 
-  println(SOMA)
+  return soma
 }

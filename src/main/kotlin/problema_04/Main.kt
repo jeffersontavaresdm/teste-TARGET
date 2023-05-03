@@ -1,4 +1,4 @@
-package questao_04
+package problema_04
 
 // Dois veículos (um carro e um caminhão) saem respectivamente de cidades opostas pela mesma rodovia.
 // O carro de Ribeirão Preto em direção a Franca, a uma velocidade constante de 110 km/h e o caminhão de Franca
@@ -24,6 +24,12 @@ package questao_04
  * porque ele terá percorrido uma distância menor em relação à cidade do que o caminhão.
  */
 fun main() {
+  val maisProximoRP = calculaMaisProximo()
+
+  println("O veículo mais próximo de Ribeirão Preto é o $maisProximoRP.")
+}
+
+fun calculaMaisProximo(): String {
   val distanciaTotal = 100 // em km
   val velocidadeCarro = 110 // em km/h
   val velocidadeCaminhao = 80 // em km/h
@@ -47,7 +53,5 @@ fun main() {
   val distanciaCaminhaoParaRP = distanciaPercorridaCaminhao
 
   // Verifica qual veículo está mais próximo de Ribeirão Preto
-  val maisProximoRP = if (distanciaCarroParaRP < distanciaCaminhaoParaRP) "Carro" else "Caminhão"
-
-  println("O veículo mais próximo de Ribeirão Preto é o $maisProximoRP.")
+  return if (distanciaCarroParaRP < distanciaCaminhaoParaRP) "Carro" else "Caminhão"
 }

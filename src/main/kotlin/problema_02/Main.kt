@@ -1,4 +1,4 @@
-package questao_02
+package problema_02
 
 import java.util.*
 
@@ -25,6 +25,10 @@ import java.util.*
  * Em seguida, o programa verifica se o número digitado pelo usuário pertence à sequência.
  */
 fun main() {
+  resolution02()
+}
+
+fun resolution02() {
   val scanner = Scanner(System.`in`)
 
   print("Digite um número para verificar se pertence a sequência de Fibonacci: ")
@@ -32,7 +36,7 @@ fun main() {
   val input: Int = scanner.nextInt()
 
   if (input >= 0) {
-    val result = fibonacci(input, mutableListOf(0, 1), 0)
+    val result = verificarSequenciaFibonacci(input, mutableListOf(0, 1), 0)
 
     if (result.second) {
       println("O valor digitado PERTENCE a sequência de Fibonacci!")
@@ -57,20 +61,23 @@ fun main() {
   }
 }
 
-fun fibonacci(valor: Int, valores: MutableList<Int>, index: Int): Pair<List<Int>, Boolean> {
-  if (index == valor) {
-    return if (valores.contains(valor)) {
-      Pair(valores.takeWhile { it <= valor }, true)
-    } else {
-      val result = valores.takeWhile { it <= valor }.toMutableList()
-      val lastValue = valores[valores.indexOf(result.last()) + 1]
-      result.add(lastValue)
+fun verificarSequenciaFibonacci(valor: Int, valores: MutableList<Int>, index: Int): Pair<List<Int>, Boolean> {
+  if (valor < 0) return Pair(mutableListOf(), false)
+  else {
+    if (index == valor) {
+      return if (valores.contains(valor)) {
+        Pair(valores.takeWhile { it <= valor }, true)
+      } else {
+        val result = valores.takeWhile { it <= valor }.toMutableList()
+        val lastValue = valores[valores.indexOf(result.last()) + 1]
+        result.add(lastValue)
 
-      Pair(result, false)
+        Pair(result, false)
+      }
     }
+
+    valores.add(valores[index] + valores[index + 1])
+
+    return verificarSequenciaFibonacci(valor, valores, index + 1)
   }
-
-  valores.add(valores[index] + valores[index + 1])
-
-  return fibonacci(valor, valores, index + 1)
 }

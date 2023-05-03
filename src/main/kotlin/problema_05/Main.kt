@@ -1,4 +1,4 @@
-package questao_05
+package problema_05
 
 import java.util.*
 
@@ -8,11 +8,7 @@ import java.util.*
 // a) Essa string pode ser informada através de qualquer entrada de sua preferência ou pode ser previamente definida no código;
 // b) Evite usar funções prontas, como, por exemplo, reverse;
 fun main() {
-  val scanner = Scanner(System.`in`)
-
-  print("Digite algo para ser invertido: ")
-
-  val str = scanner.nextLine()
+  val str = "abc 123"
   val result = inverterString(str)
 
   println("$str invertido é: $result")
@@ -26,4 +22,3 @@ fun inverterString(str: String): String {
 
   return inverted
 }
-
